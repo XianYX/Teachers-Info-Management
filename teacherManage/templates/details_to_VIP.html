@@ -1,0 +1,51 @@
+<!--teacherDetails.html-->
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+    <div class="control-group" style="text-align: center;margin-top:50px;color:black;">
+		<h1>教师管理系统</h1>
+		<hr/>
+	</div>
+
+<table border=1 class="teacher" align="center" style="text-align: center;margin-top:100px;color:black;">
+	<caption>教师详细信息</caption>
+	<tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>电话</th>
+        <th>邮箱</th>
+        <th>地址</th>
+        <th>照片</th>
+        <th>职称</th>
+        <th>学院</th>
+        <th>研究方向</th>
+        <th>爱好</th>
+	</tr>
+
+	<tr>
+
+        <td>{{ show_teacher.name }}</td>
+        <td>{{ show_teacher.age }}</td>
+        {% if show_teacher.sex %}
+            <td>男</td>
+        {% else %}
+            <td>女</td>
+        {% endif %}
+        <td>{{ show_teacher.tel }}</td>
+        <td>{{ show_teacher.email }}</td>
+        <td>{{ show_teacher.address }}</td>
+        <td><img src="{% url 'media' show_teacher.photo %}" width="128" height="128"></td>
+        <td>{{ show_teacher.title }}</td>
+        <td>{{ show_teacher.academy }}</td>
+        <td>{{ show_teacher.research }}</td>
+        <td>{{ show_teacher.hobby }}</td>
+
+
+	</tr>
+
+</table>
+
+<input type="button" name="button1" id="button1" value="返回" onclick="history.go(-1)">

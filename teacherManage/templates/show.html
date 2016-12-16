@@ -1,0 +1,39 @@
+<!--show.html-->
+
+<head xmlns="http://www.w3.org/1999/html">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+    <div class="control-group" style="text-align: center;margin-top:50px;color:black;">
+		<h1>教师管理系统</h1>
+		<hr/>
+	</div>
+<div class="control-group" style="text-align: center;margin-top:100px;color:black;">
+<table border=1 class="teacher" align="center" style="text-align: center;margin-top:100px;color:black;">
+    <caption>教师</caption>
+    <tr>
+        <th>姓名</th>
+        <th>学院</th>
+        <th>研究方向</th>
+    </tr>
+    {% for show_teacher in show_teachers %}
+    <tr>
+        <td><a href="{% url 'teacherDetails' show_teacher.pk %}">{{ show_teacher.name}}</a></td>
+        <td>{{ show_teacher.academy }}</td>
+        <td>{{ show_teacher.research }}</td>
+
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+<form action="/searchTeacher/" method="POST">
+	{% csrf_token %}
+	输入教师姓名查询:<input type="text" name="search_name">
+	<input type="submit" value="查询">
+</form>
+</div>
+
+
+
+

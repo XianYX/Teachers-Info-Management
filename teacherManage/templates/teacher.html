@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>教师主页</title>
+    <link rel="stylesheet" type="text/css" href="/static1/css1/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="/static1/css1/default.css">
+    <link rel="stylesheet" type="text/css" href="/static1/css1/styles.css">
+    <style type="text/css">
+        body {
+            background: url(/static1/images/1.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: 0px 0px;
+            background-size: 1400px 600px;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+</script>
+<header class="htmleaf-header">
+    <h1>教师管理系统</h1>
+</header>
+
+<p>{{ pre_teacher.name }}老师，您好！</p>
+
+<table border=1 class="teacher" align="center" style="text-align: center;margin-top:100px;color:black;">
+    <caption>教师</caption>
+    <tr>
+        <th>姓名</th>
+        <th>学院</th>
+        <th>研究方向</th>
+    </tr>
+    {% for show_teacher in teachers %}
+        <tr>
+            <td><a href="{% url 'teacherDetails' show_teacher.pk %}">{{ show_teacher.name }}</a></td>
+            <td>{{ show_teacher.academy }}</td>
+            <td>{{ show_teacher.research }}</td>
+
+        </tr>
+    {% endfor %}
+</table>
+
+<button><a href="{% url 'view_appointments' %}?email={{ pre_teacher.email }}">查看预约情况</a></button>
+<button><a href="{% url 'teacher_update' %}?email={{ pre_teacher.email }}">修改个人信息</a></button>
+</body>
+</html>

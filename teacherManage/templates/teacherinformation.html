@@ -1,0 +1,139 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>教师详细信息</title>
+    <!--css-->
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--css-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Home Plat Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!--js-->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <!--js-->
+    <!--webfonts-->
+    <link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,700italic,700,600italic,600,400italic,300italic,300,100italic,100'
+          rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+          rel='stylesheet' type='text/css'>
+    <!--webfonts-->
+</head>
+<body>
+<!--header-->
+<div class="header" id="home">
+    <div class="header-top">
+        <div class="container">
+            <div class="head-top">
+                <div class="indicate">
+							<i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><a href="#">{{ pre_student.name }}同学，欢迎你！</a>
+						</div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="logo">
+                <h1><a href="index.html">教师管理系统<span>by.厉害了我的哥</span></a></h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header-bottom">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <nav class="menu menu--francisco">
+                            <ul class="nav navbar-nav menu__list">
+                                <li class="menu__item"><a href="{% url 'index_student' %}?email={{ pre_student.email }}" class="menu__link"><span
+                                        class="menu__helper">主页</span></a></li>
+                                <li class="menu__item"><a href="{% url 'all_teacher' %}?email={{ pre_student.email }}" class="menu__link"><span
+                                        class="menu__helper">所有教师</span></a></li>
+                                <li class="menu__item"><a href="{% url 'recommend_teacher' %}?email={{ pre_student.email }}" class="menu__link"><span
+                                        class="menu__helper">推荐教师</span></a></li>
+                                <li class="menu__item"><a href="/look_data/" class="menu__link"><span
+                                        class="menu__helper">查看预约信息</span></a></li>
+                                <li class="menu__item"><a href="/change_password/" class="menu__link"><span
+                                        class="menu__helper">修改密码</span></a></li>
+
+                            </ul>
+                        </nav>
+                        <div class="clearfix"></div>
+                    </div><!-- /.navbar-collapse -->
+                    <!-- /.container-fluid -->
+                </div>
+            </nav>
+
+        </div>
+    </div>
+</div>
+<!--header-->
+<!--banner-->
+<div class="banner1">
+    <div class="container">
+        <h3 class="animated wow slideInLeft" data-wow-delay=".5s"><a href="/index_student/">主页</a> / <span>本页</span>
+        </h3>
+    </div>
+</div>
+<!--banner-->
+<!--contact-->
+<div class="content">
+    <div class="contact-w3l">
+        <h2 class="tittle">教师的详细信息</h2>
+        <div class="container">
+            <div class="page-header">
+                <h3>查找结果</h3>
+            </div>
+            <div class="bs-example animated wow fadeInLeft" data-wow-duration="1000ms" data-example-id="simple-table">
+                <table class="table">
+                    <caption>详细信息</caption>
+                    <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>性别</th>
+                        <th>电话</th>
+                        <th>邮箱</th>
+                        <th>地址</th>
+                        <th>职称</th>
+                        <th>学院</th>
+                        <th>研究方向</th>
+                        <th>爱好</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ show_teacher.name }}</td>
+                            <td>{{ show_teacher.age }}</td>
+                            {% if show_teacher.sex %}
+                                <td>男</td>
+                            {% else %}
+                                <td>女</td>
+                            {% endif %}
+                            <td>{{ show_teacher.tel }}</td>
+                            <td>{{ show_teacher.email }}</td>
+                            <td>{{ show_teacher.address }}</td>
+                            <td>{{ show_teacher.title }}</td>
+                            <td>{{ show_teacher.academy }}</td>
+                            <td>{{ show_teacher.research }}</td>
+                            <td>{{ show_teacher.hobby }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

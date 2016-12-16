@@ -1,0 +1,38 @@
+<!--teacher_update.html-->
+<!DOCTYPE html>
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<table border=1 class="book" id="alternatecolor">
+<form action="/updateDetails/" method="POST">
+	{% csrf_token %}
+	<caption>更新信息</caption><br>
+	<tr>
+        <th>年龄</th>
+        <th>电话</th>
+        <th>地址</th>
+        <th>职称</th>
+        <th>研究方向</th>
+
+
+	</tr>
+	<br>
+	<tr>
+
+        <td><input type="number" name="age" value="{{the_teacher.age}}" min=20 step="1"/></td>
+        <td><input type="text" name="tel" value="{{the_teacher.tel}}"/></td>
+        <td><input type="text" name="address" value="{{the_teacher.address}}"/></td>
+        <td><input type="text" name="title" value="{{the_teacher.title}}"/></td>
+        <td><input type="text" name="research" value="{{the_teacher.research}}" /></td>
+
+
+	</tr>
+
+	<input type="submit" value="提交">
+</form>
+
+</table>
+
+<input type="button" name="button1" id="button1" value="返回" onclick="history.go(-1)">

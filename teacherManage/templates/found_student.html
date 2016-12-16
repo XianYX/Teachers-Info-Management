@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生密码找回</title>
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/static/css1/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css1/default.css">
+    <link rel="stylesheet" type="text/css" href="/static/css1/styles.css">
+</head>
+<body>
+<div class="htmleaf-container">
+        <header class="htmleaf-header">
+            <h1>教师管理系统</h1>
+        </header>
+        <div class="wrapper">
+            <div class="container">
+				<h1>请输入您的邮箱：</h1>
+				<form action="/found_student/" method="post">
+					{% csrf_token %} 
+					<input type="text" name="email">
+					<input type="submit" value="发邮件">
+				</form>
+			</div>
+		</div>
+</div>    
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生注册</title>
+    <link rel="stylesheet" href="/static/css2/style.css" type="text/css" media="all" />
+
+</head>
+<body>
+<h1 class="book">教师管理系统</h1>
+
+<div class="reg">
+
+    <h1>填写您的信息</h1>
+    <form class="form-horizontal" action="/register/" method="post">
+      {% csrf_token %}
+    <div class="members">
+      <div class="adult">
+        <h2>姓名</h2>
+        <input type="text" value="{{ form.password.value|default:'' }}" name="username" placeholder="name">
+      </div>
+
+      <div class="adult">
+        <h2>密码</h2>
+          <input type="password" value="{{ form.password.value|default:'' }}" name="password" placeholder="password">  
+      </div>
+
+      <div class="adult">
+        <h2>邮箱</h2>
+          <input type="text" value="{{ form.email.value|default:'' }}" name="email" placeholder="email">  
+      </div>
+
+      <div class="adult">
+        <h2>联系电话</h2>
+          <input type="text" value="{{ form.phone.value|default:'' }}" name="phone" placeholder="phone"> 
+      </div>
+
+      <div class="adult">
+        <h2>爱好</h2>
+          <input type="text" value="{{ form.phone.value|default:'' }}" name="hobby" placeholder="phone"> 
+      </div>
+
+      <div class="adult">
+        <h2>年级</h2>
+          <input type="text" value="{{ form.phone.value|default:'' }}" name="education" placeholder="phone">
+      </div>
+
+      <div class="adult">
+        <h2>学院</h2>
+          <div class="dropdown-button">                     
+                <select class="dropdown" tabindex="10" data-settings='{"wrapperClass":"flat"}' name="academy">
+                    <option value="计算机学院">计算机学院</option>
+                    <option value="航天学院">航天学院</option>
+                    <option value="人文学院">人文学院</option>
+                    <option value="软件学院">软件学院</option>
+                    <option value="能源学院">能源学院</option>
+                    <option value="英才学院">英才学院</option>
+                </select>
+            </div>
+      </div>
+
+    <div class="submit">
+        <input type="submit" class="book" value="注册">
+    </div>
+  </div>
+  </form>
+</div>    
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!--make_appointment.html-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>教师主页</title>
+    <link rel="stylesheet" type="text/css" href="/static1/css1/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="/static1/css1/default.css">
+    <link rel="stylesheet" type="text/css" href="/static1/css1/styles.css">
+    <style type="text/css">
+        body {
+            background: url(/static1/images/1.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: 0px 0px;
+            background-size: 1400px 600px;
+        }
+    </style>
+
+</head>
+
+<body>
+<script>
+
+    var formatDate = function () {
+        var myDate = new Date();
+        var y = myDate.getFullYear();
+        var m = myDate.getMonth() + 1;
+        m = m < 10 ? '0' + m : m;
+        var d = myDate.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        return y + '-' + m + '-' + d;
+    };
+
+    var ones = document.getElementById('date');
+    ones.min = formatDate();
+
+</script>
+
+
+<table border=1 class="teacher" align="center" style="text-align: center;margin-top:100px;color:black;">
+    <form action="/submit_appointment/" method="POST">
+        {% csrf_token %}
+        <caption>预约信息表</caption>
+        <tr>
+            <th>日期</th>
+            <th>时间</th>
+            <th>学生姓名</th>
+            <th>学生邮箱</th>
+            <th>预约教师</th>
+            <th>教师邮箱</th>
+            <th>主题（必填）</th>
+            <th>摘要（选填）</th>
+        </tr>
+        <tr>
+            <td><input id="date" name="date" required min="2016-12-15" type="date"/></td>
+            <td><select class="dropdown" tabindex="10" data-settings='{"wrapperClass":"flat"}' name="time">
+                <option value="1">第1-2节</option>
+                <option value="2">第3-4节</option>
+                <option value="3">第5-6节</option>
+                <option value="4">第7-8节</option>
+            </select></td>
+            <td>{{ the_student.name }}</td>
+            <td>{{ the_student.email }}</td>
+            <td>{{ the_teacher.name }}</td>
+            <td>{{ the_teacher.email }}</td>
+            <td><input type="text" name="topic"/></td>
+            <td><input type="text" name="content"/></td>
+            <td><input style="display: none" name="pre_pk" value="{{ new_appointment.pk }}"/></td>
+        </tr>
+        <input type="submit" value="提交">
+    </form>
+
+</table>
+
+<input type="button" name="button1" id="button1" value="返回" onclick="history.go(-1)">
+</body>

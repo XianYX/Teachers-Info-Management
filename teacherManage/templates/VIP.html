@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>主页</title>
+<link rel="stylesheet" type="text/css" href="/static/css1/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css1/default.css">
+    <link rel="stylesheet" type="text/css" href="/static/css1/styles.css">
+    <style type="text/css">
+        body {	background: url(/static/images2/1.jpg);
+        		background-repeat: no-repeat;
+    			background-attachment: fixed;
+    			background-position:  0px 0px;
+    			background-size:  1400px 600px;}
+    </style>
+</head>
+<body>
+	<header class="htmleaf-header">
+            <h1>教师管理系统</h1>
+    </header>
+<table border=1 class="teacher" align="center" style="text-align: center;margin-top:100px;color:black;">
+    <caption>教师</caption>
+    <tr>
+        <th>姓名</th>
+        <th>学院</th>
+        <th>研究方向</th>
+        <th>审核状态</th>
+        <th>操作</th>
+    </tr>
+    {% for t in teachers %}
+    <tr>
+        <td><a href="{% url 'details_to_VIP' %}?pk={{ t.pk }}">{{ t.name}}</a></td>
+        <td>{{ t.academy }}</td>
+        <td>{{ t.research }}</td>
+        {% if t.tag == True %}
+            <td>已通过</td>
+        {% else %}
+            <td>待审核</td>
+        {% endif %}
+        <td><a href="{% url 'allow_teacher' t.pk %}" >通过</a></td>
+
+
+
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+<form action="/VIP_search/" method="POST">
+    {% csrf_token %}
+    输入教师姓名查询:<input type="text" name="search_name">
+    <input type="submit" value="查询">
+</form>
+
+</body>
+</html>
